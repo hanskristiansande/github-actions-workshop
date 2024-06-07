@@ -27,3 +27,10 @@ jobs:
 
       - name: Test
         run: go test ./...
+  lint:
+    name: "Lint"
+    runs-on: "ubuntu-latest"
+    steps:
+      - run: |
+          no_unformatted_files="$(gofmt -l "$(git ls-files '*.go')" | wc -l)"
+          exit "$no_unformatted_files"
