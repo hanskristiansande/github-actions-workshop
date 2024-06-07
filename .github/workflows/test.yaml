@@ -31,6 +31,8 @@ jobs:
     name: "Lint"
     runs-on: "ubuntu-latest"
     steps:
+      # Checkout code
+      - uses: actions/checkout@v4
       - run: |
           no_unformatted_files="$(gofmt -l "$(git ls-files '*.go')" | wc -l)"
           exit "$no_unformatted_files"
